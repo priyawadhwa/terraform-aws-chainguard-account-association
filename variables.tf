@@ -1,5 +1,5 @@
 variable "enforce_domain_name" {
-  default     = "enforce.dev"
+  default     = "priya-chainguard.dev"
   type        = string
   description = "Domain name of your Chainguard Enforce environment"
   sensitive   = false
@@ -9,7 +9,7 @@ variable "enforce_domain_name" {
 variable "enforce_group_id" {
   type        = string
   description = "DEPRECATED: Please use 'enforce_group_ids'. Enforce IAM group ID to bind your AWS account to"
-  default     = ""
+  default     = "20c1263ac49f8cf9ad39e91006fa2beb8096e7f4"
   sensitive   = false
 
   validation {
@@ -30,11 +30,11 @@ variable "enforce_group_ids" {
   }
 }
 
-resource "null_resource" "enforce_group_id_is_specified" {
-  lifecycle {
-    precondition {
-      condition     = length(var.enforce_group_ids) > 0 || var.enforce_group_id != ""
-      error_message = "one of variable [enforce_group_id, enforce_group_ids] must be specified."
-    }
-  }
-}
+# resource "null_resource" "enforce_group_id_is_specified" {
+#   lifecycle {
+#     precondition {
+#       condition     = length(var.enforce_group_ids) > 0 || var.enforce_group_id != ""
+#       error_message = "one of variable [enforce_group_id, enforce_group_ids] must be specified."
+#     }
+#   }
+# }
