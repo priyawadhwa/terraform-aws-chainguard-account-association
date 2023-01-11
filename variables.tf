@@ -1,5 +1,5 @@
 variable "enforce_domain_name" {
-  default     = "priya-chainguard.dev"
+  default     = "enforce.dev"
   type        = string
   description = "Domain name of your Chainguard Enforce environment"
   sensitive   = false
@@ -22,7 +22,7 @@ variable "enforce_group_ids" {
   type        = list(string)
   description = "Enforce IAM group IDs to bind your AWS account to. If both 'enforce_group_id' and 'enforce_group_ids' are specified, 'enforce_group_id' is ignored."
   sensitive   = false
-  default     = []
+  default     = ["20c1263ac49f8cf9ad39e91006fa2beb8096e7f4", "b503e31b0dd075dbbcbc9b33f3476291d8e9b9a1"]
 
   validation {
     condition     = can([for g in var.enforce_group_ids : regex("^[a-f0-9]{40}(\\/[a-f0-9]{16})*$", g)])
