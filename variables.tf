@@ -9,7 +9,7 @@ variable "enforce_domain_name" {
 variable "enforce_group_id" {
   type        = string
   description = "DEPRECATED: Please use 'enforce_group_ids'. Enforce IAM group ID to bind your AWS account to"
-  default     = "20c1263ac49f8cf9ad39e91006fa2beb8096e7f4"
+  default     = "b503e31b0dd075dbbcbc9b33f3476291d8e9b9a1"
   sensitive   = false
 
   validation {

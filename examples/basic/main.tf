@@ -32,6 +32,7 @@ data "aws_caller_identity" "current" {}
 
 resource "chainguard_account_associations" "demo-chainguard-dev-binding" {
   group = chainguard_group.root.id
+  name  = "aws account association"
   amazon {
     account = data.aws_caller_identity.current.account_id
   }
