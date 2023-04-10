@@ -16,16 +16,13 @@ provider "chainguard" {
 
 provider "aws" {}
 
-resource "chainguard_group" "root" {
-  name        = "demo root"
-  description = "root group for demo"
-}
+
 
 module "aws-impersonation" {
   source = "./../../"
 
   enforce_domain_name = "enforce.dev"
-  enforce_group_id    = chainguard_group.root.id
+  enforce_group_id    = "b503e31b0dd075dbbcbc9b33f3476291d8e9b9a1"
 }
 
 module "aws-auditlogs" {
@@ -35,8 +32,8 @@ module "aws-auditlogs" {
 data "aws_caller_identity" "current" {}
 
 resource "chainguard_account_associations" "demo-chainguard-dev-binding" {
-  group = chainguard_group.root.id
-  name  = "aws account association"
+  group = "b503e31b0dd075dbbcbc9b33f3476291d8e9b9a1"
+  name  = "aws"
   amazon {
     account = data.aws_caller_identity.current.account_id
   }
